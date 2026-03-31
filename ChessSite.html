@@ -1,72 +1,498 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Chess Game</title>
+  <meta charset="UTF-8">
+  <title>Newsletter Échiquier</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-image: url('ChessGPT.PNG');
-      background-size: cover;     
-      background-position: center; 
-      background-repeat: no-repeat;
-      height: 100vh;               
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: white;
+      font-family: "Times New Roman", serif;
+      background: #e6e6e6;
     }
-    header {
-      background-color: transparent; /* no solid background */
-      width: 100%;
-      padding: 1em;
+
+    .navbar {
+      background: #0b1c5c;
+      padding: 15px;
       text-align: center;
-      height: 100px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* improves readability */
     }
-    main {
-      max-width: 800px;
-      background: rgba(255, 255, 255, 0.3); /* semi-transparent white */
-      padding: 2em;
-      margin: 2em;
-      border-radius: 8px;
-      text-align: center;
+
+    .nav-btn {
+      background: #1c2f8a;
       color: white;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-      box-shadow: none;
-    }
-    a.download-btn {
-      display: inline-block;
-      margin-top: 1em;
-      padding: 1em 2em;
-      background-color: #28a745;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
+      border: none;
+      padding: 10px 16px;
+      margin: 0 5px;
+      border-radius: 6px;
+      cursor: pointer;
       font-weight: bold;
     }
-    a.download-btn:hover {
-      background-color: #218838;
+
+    .nav-btn.active {
+      background: #f2c94c;
+      color: black;
+    }
+
+    .page {
+      display: none;
+      width: 1100px;
+      min-height: 750px; 
+      margin: 20px auto;
+      background: white;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: visible; 
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .title {
+      text-align: center;
+      color: #1c2f8a;
+    }
+
+    .title h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .title p {
+      margin-top: 5px;
+      color: gray;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #1c2f8a;
+      margin: 10px 0 10px;
+    }
+
+    .subtitle {
+      text-align: left;
+      color: #1c2f8a;
+    }
+
+    .subtitle h1 {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    h2 {
+      color: #1c2f8a;
+      border-bottom: 2px solid #1c2f8a;
+      padding-bottom: 5px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    strong {
+      color: #1c2f8a;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: gray;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ✅ PAGE 7 HORIZONTALE */
+   .page-7 .content {
+     display: block; /* ⬅️ casse complètement le grid */
+    }
+
+    .page-7 .content > div {
+      width: 100%;
+      margin-bottom: 40px; /* espace entre les deux blocs */
+    }
+
+    @media (max-width: 800px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>ChessGPT</h1>
-  </header>
-  <main>
-    <p>Bienvenue sur mon jeu d'echecs. Telechargez le lien et bon amusement!</p>
-    
-    <!-- Replace the href with your actual download link -->
-    <a href="ChessGPT.zip" class="download-btn" download>Telecharge ChessGPT</a>
 
-    <section id="game-embed" style="margin-top: 3em;">
-      <h2>Jeu en Ligne (Bientot Disponible!)</h2>
-      <p>Vous pourrez y jouer ici lorsqu'elle est disponible</p>
-    </section>
-  </main>
+<div class="navbar">
+  <button class="nav-btn active" onclick="showPage(1)">Page 1</button>
+  <button class="nav-btn" onclick="showPage(2)">Page 2</button>
+  <button class="nav-btn" onclick="showPage(3)">Page 3</button>
+  <button class="nav-btn" onclick="showPage(4)">Page 4</button>
+  <button class="nav-btn" onclick="showPage(5)">Page 5</button>
+  <button class="nav-btn" onclick="showPage(6)">Page 6</button>
+  <button class="nav-btn" onclick="showPage(7)">Page 7</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <div class="title">
+    <h1>♟️ Newsletter de l'Échiquier Tournaisien</h1>
+    <p>Mars 2026</p>
+  </div>
+
+  <hr>
+
+  <div class="content">
+    <div>
+      <p>Salut à tous,</p>
+
+      <p>C'est avec grand plaisir que je vous présente la toute première newsletter du club d'échecs ! 🎉</p>
+
+      <p>L'objectif est simple : vous tenir informés de la vie du club, partager les résultats et annoncer les événements à venir. Que vous soyez joueur régulier, compétiteur ou simplement amateur d'échecs, cette newsletter est faite pour vous.</p>
+
+      <p>Chaque mois, une nouvelle édition sera publiée pour revivre les moments forts, suivre l'évolution du classement et mettre en avant les performances de chacun, le tout dans une ambiance conviviale ♟️</p>
+
+      <p>Bonne lecture, et surtout... à bientôt autour de l'échiquier !</p>
+
+      <p><em>Liam, directeur des tournois internes.</em></p>
+    </div>
+
+    <div>
+      <h2>♟️ Les compétitions internes avancent...</h2>
+
+      <p>On approche petit à petit de la fin des compétitions internes de ce premier quadrimestre 2026.</p>
+
+      <p>En <strong>Championnat A</strong>, <strong>Michel C.</strong> occupe actuellement la première place, suivi de très près par <strong>Jonathan D.</strong> et <strong>Florian J.</strong> À ce stade, seuls ces trois joueurs peuvent encore prétendre au titre, ce qui promet une fin de championnat très disputée 🔥</p>
+
+      <p>Du côté du <strong>Championnat B</strong>, <strong>Malo T.</strong> est en tête sur ce dernier mois et s'impose comme un grand favori. Pour sa toute première participation dans cette catégorie, son parcours est encore plus impressionnant.</p>
+
+      <p>Mais rien n'est joué ! <strong>Esteban H.</strong>, <strong>Damien V.</strong> et <strong>Laurent L.</strong> sont toujours bien présents et prêts à lui compliquer la tâche jusqu'au bout ❗</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>écrit par Liam P.</span>
+    <span>1</span>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="title">
+    <h1>♟️ Newsletter de l'Échiquier Tournaisien</h1>
+    <p>Mars 2026</p>
+  </div>
+
+  <hr>
+
+  <div class="content">
+    <div>
+      <h2>🏆 Une victoire déjà confirmée !</h2>
+
+      <p>Avec 2 manches restantes, l'Open Hivernal a déjà été remporté par <strong>Govan C.</strong>, auteur d'une performance parfaite avec un <strong>6/6</strong> 👏 Pour sa première compétition officielle au sein du club, c'est tout simplement impressionnant !</p>
+
+      <p>Derrière lui, la lutte pour le podium reste ouverte. À noter les belles performances de <strong>Théo C.</strong> et <strong>Paul T.</strong>, qui peuvent encore viser une place sur le podium.</p>
+    </div>
+
+    <div>
+      <h2>♟️ Le premier score parfait du Zodiac</h2>
+
+      <p>Le vendredi 13 mars a eu lieu l'épreuve Fischer du Zodiac. Celle-ci reprend les principes du Chess960, avec une position de départ aléatoire des pièces.</p>
+
+      <p>Cette édition a été remportée par <strong>Michel C.</strong>, qui signe un superbe <strong>8/8</strong> — une première dans la compétition — pour un total maximal de <strong>24 points</strong> sur la soirée 🔥</p>
+
+      <p>La prochaine édition aura lieu le <strong>3 avril</strong>, avec une nouveauté au club : l'antichess (aussi appelé "qui perd gagne").</p>
+
+      <p>Le principe ? Perdre toutes ses pièces pour gagner la partie.</p>
+
+      <p>👉 La condition : <strong>vous êtes obligé de capturer une pièce quand c'est possible !</strong></p>
+
+      <p>Une chose est sûre : la soirée s'annonce imprévisible et très amusante 😄</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>écrit par Liam P.</span>
+    <span>2</span>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <div class="title">
+    <h1>♟️ Newsletter de l'Échiquier Tournaisien</h1>
+    <p>Mars 2026</p>
+  </div>
+
+  <hr>
+
+  <div class="content">
+    <div>
+      <h2>⚙️ Un changement dans le comité</h2>
+
+      <p>Des changements ont eu lieu au sein du comité avec la <strong>démission</strong> de <strong>Julien M.</strong> (ancien trésorier et directeur des tournois internes pendant de nombreuses années) ainsi que du président <strong>Khevin C.</strong></p>
+
+      <p>Un vote a eu lieu durant ce mois de mars, et <strong>Esteban H.</strong> a été élu président.</p>
+    
+    <p>Il devient ainsi le plus jeune président de l’histoire du club d’échecs de Tournai.</p>
+    
+    <p>Sa motivation et ses idées permettront sans aucun doute de continuer à faire évoluer le club.</p>
+    </div>
+
+    <div>
+      <h2>🏆 Résultats surprenants</h2>
+      <p>Chaque mois, certaines performances méritent une mise en avant pour leur caractère inattendu. Voici le top 3 de mars :</p>
+<ul>
+      <li><strong>Théo C. (1400 elo)</strong> 1 - 0 <strong>Julien M. (1938 elo)</strong></li>
+
+      <p>Ce résultat a eu lieu lors de la 6e manche de l'Open Hivernal.</p>
+
+      <li><strong>Laurent L. (1674 elo)</strong> 0 - 1 <strong>Malo T. (1646 elo)</strong></li>
+
+      <p>Ce résultat a eu lieu lors de la 6e manche du Championnat B.</p>
+
+      <li><strong>Jean-Pol S. (1546 elo)</strong> 0,5 - 0,5 <strong>Michel C. (1881 elo)</strong></li>
+
+      <p>Ce résultat a eu lieu en dehors des portes du club, entre la 6e et la 7e manche du Championnat A.<p>
+</ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>écrit par Liam P.</span>
+    <span>3</span>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+  <div class="title">
+    <h1>♟️ Newsletter de l'Échiquier Tournaisien</h1>
+    <p>Mars 2026</p>
+  </div>
+
+  <hr>
+
+  <div class="subtitle">
+        <h1>📊 Interclubs</h1>
+   </div>     
+     
+  <hr> 
+          
+     <div class="content">  
+     <div>
+      <p><strong>01/03/26</strong></p>
+<ul>
+  <li>Tournai 1 <strong>s’incline à l’extérieur</strong> contre Oostende 2 : 0,5 - 5,5</li>
+  <li>Tournai 2 <strong>perd à domicile</strong> contre Ypres 2 : 1,5 - 2,5 et se rapproche de la relégation</li>
+  <li>Tournai 3 <strong>s’incline également à l’extérieur</strong> contre Courtrai 1 : 1 - 3</li>
+</ul>
+<p>👉 À noter : la victoire impressionnante de <strong>Théo C.</strong> face à un 1967 Elo en table 1</p>
+<p>➡️ Une semaine difficile pour le club</p>
+</div>  
+<div>
+      <p><strong>15/03/26</strong></p>
+<ul>
+  <li> Tournai 1 <strong>perd à domicile</strong> contre Waregem 1 : 2,5 - 3,5</li>
+</ul>  
+<p>👉 Belle victoire de <strong>Julien M.</strong> contre un 2148 Elo</p>
+<ul> 
+  <li>Tournai 2 fait <strong>match nul à l’extérieur</strong> contre Gand 6 : 2 - 2</li>
+</ul>
+<p>➡️ Un résultat important pour le maintien</p>
+<ul>
+  <li>Tournai 3 <strong>s’impose à domicile</strong> contre Waregem 4 : 2,5 - 1,5</li>
+</ul>   
+       <p><strong>29/03/26</strong></p>
+<ul>
+  <li>Tournai 1 <strong>gagne par forfait</strong> contre Brugge</li>
+  <li>Tournai 2 <strong>s’incline à domicile</strong> contre Roulers 1 : 0,5 - 3,5</li>
+</ul>
+<p>➡️ Relégation confirmée en division 5</p>
+<ul>
+  <li>Tournai 3 fait <strong>match nul à l’extérieur</strong> contre Brugge 7 : 2 - 2</li>
+</ul>  
+<p>👉 Il reste une dernière ronde le <strong>19 avril</strong> pour clôturer la saison 2025/2026.</p>
+<p>Pensez à prévenir Kevin de votre présence ou absence pour faciliter l’organisation</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>écrit par Liam P.</span>
+    <span>4</span>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+  <div class="title">
+    <h1>♟️ Newsletter de l'Échiquier Tournaisien</h1>
+    <p>Mars 2026</p>
+  </div>
+
+  <hr>
+
+  <div class="subtitle">
+        <h1>🌍 Compétitions Externes</h1>
+   </div>     
+     
+  <hr> 
+          
+     <div class="content">  
+     <div>
+       <p>Le samedi 28 février a eu lieu le 9<sup>e</sup> rapide de Capelle-La-Grande, qui a réuni un total de 324 joueurs.</p>
+       
+       <p>Parmi eux, on compte la participation de <strong>Kevin M.</strong>, <strong>Damien B.</strong>, <strong>Liam P.</strong>, <strong>Esteban H.</strong> et <strong>Luka R.</strong> pour représenter le club de Tournai.</p>
+       
+       <p>Un tournoi intense a vu <strong>Kevin M.</strong> et <strong>Liam P.</strong> jouer contre des <strong>Maîtres Internationaux</strong> avec leurs parties diffusées sur écran.</p> 
+       
+       <p>À la fin de la compétition, <strong>Damien B.</strong> remporte le trophée pour <strong>meilleur joueur non-côté</strong> avec 4 points sur 9. Félicitations à lui !</p>
+
+       <p><strong>🏅 Classement final des joueurs du club</strong></p>
+<ul>
+  <li><strong>Liam P. 4/9 → 176<sup>e</sup></strong></li>
+  <li><strong>Kevin M. 4/9 → 187<sup>e</sup></strong></li>
+  <li><strong>Esteban H. 4/9 → 207<sup>e</sup></strong></li>
+  <li><strong>Damien B. 4/9 → 217<sup>e</sup></strong></li>
+  <li><strong>Luka R. 3/9 → 278<sup>e</sup></strong></li>
+</ul>
+      <p>Tous les joueurs peuvent être fiers de leur performance après la compétition féroce du tournoi.</p>
+</div>
+<div>
+<p>Vendredi 20 mars a eu lieu une rencontre au club d'échecs de Namur avec deux grands maîtres : le GM <strong>Sebastien Maze</strong> et le GM <strong>Fabien Libiszewski</strong>.</p>
+
+<p>Deux joueurs Tournaisiens ont pu tenter leur chance et les affronter lors d'une tournante face aux deux GMs : <strong>Esteban H.</strong> a affronté <strong>Fabien</strong> et <strong>Kevin M.</strong> a affronté <strong>Sebastien</strong>.</p>
+
+<p><strong>Esteban</strong> a su tenir <strong>25 coups</strong> avant d'abandonner, tandis que <strong>Kevin</strong>, sur une partie intense, a tenu <strong>40 coups</strong> après une préparation le jour même.</p>
+
+<p>Une belle expérience pour les deux joueurs de Tournai.</p>
+</div>
+</div>
+  <div class="footer">
+    <span>écrit par Liam P.</span>
+    <span>5</span>
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+  <div class="title">
+    <h1>♟️ Newsletter de l'Échiquier Tournaisien</h1>
+    <p>Mars 2026</p>
+  </div>
+
+  <hr>
+
+  <div class="subtitle">
+        <h1>📊 Classement PITCH</h1>
+   </div>     
+     
+  <hr> 
+          
+     <div class="content">  
+     <div>
+       <p>Le <strong>classement PITCH</strong> est une nouveaute cette annee</p>
+       
+       <p>Il consiste a donner un certain nombre de point selon le <strong>placement des joueurs</strong> et <strong>l'importance de la competition.</strong></p>
+       
+       <p>Un trophee est reserve au meilleur joueur du PITCH a la fin de l'annee aussi nomme "Le meilleur joueur 2026 de l'echiquier tournaisien".</p> 
+       
+       <p>Le championnat A ayant des adversaires plus difficile a affronter donne plus de points que le championnat B (Mais le premier du B gagne plus que le 5 eme du A donc tout depend de la position finale du joueur).</p>
+
+       <p>Tous joueurs ayant des forfaits dans le championnat ou la coupe perd 5 points PITCH ce qui peut couter a la fin de la saison.</p>
+
+       <p>Ce systeme est utilise pour determiner qui sera dans le championnat A et dans le championnat B l'an prochain.</p>
+
+       <p>Chaque quadrimestre a une competition majeur qui donne des points selon le classement finale.</p>
+
+       <p>Ceux-ci sont les championnats, L'open Hivernal, L'Open d'Ete, La Coupe et l'Open d'Automne.</p>
+
+       <p>Les joueurs reguliers seront ceux recompense alors n'hesitez pas a venir jouer quand vous pouvez.</p>
+
+       <p>Voici le top 16 a la fin du mois de mars (rappel que seulement 8 places s'offre pour le championnat A et 8 places dans le B).</p>
+  </div>
+<div>
+<p><strong>🏅 Classement PITCH le 1er avril</strong></p>
+<ul>
+  <li><strong>Canel M. 200 pts (1er A)</strong></li>
+  <li><strong>Selimov R. 160 pts (2 eme A)</strong></li>
+  <li><strong>Jouvel F. 133 pts (3 eme A)</strong></li>
+  <li><strong>Trenteseaux M. 120 pts(1er B)</strong></li>
+  <li><strong>Drossart J. 114 pts (4 eme A)</strong></li>
+  <li><strong>Menet K. 100 pts (5 eme A)</strong></li>
+  <li><strong>Hardenne E. 96 pts (2 eme B)</strong></li>
+  <li><strong>Skowron JP. 89 pts (6 eme A)</strong></li>
+  <li><strong>Vanneste D. 80 pts (3 eme B)</strong></li>
+  <li><strong>Pitcher L. 80 pts (7 eme A)</strong></li>
+  <li><strong>Taquet G. 73 pts (8 eme A)</strong></li>
+  <li><strong>Lienart L. 69 pts (4 eme B)</strong></li>
+  <li><strong>Chajia G. 60 pts (1er C)</strong></li>
+  <li><strong>Quenoy V. 50 pts (5 eme B)</strong></li>
+  <li><strong>Marcy M. 48 pts (2 eme C)</strong></li>
+  <li><strong>Barcak G. 48 pts (7 eme B)</strong></li>
+</ul>
+<p>le 6 eme B a une penalite de 5 points pour un forfait et perd sa place.</p>
+
+<p>Ce classement comporte seulement une competition et est loin d'etre termine, si vous ne voyez pas votre nom, n'abandonner pas.</p>
+
+<p>L'Open d'Ete et la coupe/Open d'Automne peuvent etre votre chance de gagner enormement de points.</p>
+
+<p>Ce classement sera disponible prochainement pour les membres du club via le site internet du club.</p>
+
+<p>Si vous avez des questions sur ce nouveau classement, n'hesitez pas a me le demander en personne ou via l'adresse e-mail du club.</p>
+</div>
+</div>
+  <div class="footer">
+    <span>écrit par Liam P.</span>
+    <span>6</span>
+  </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page page-7" id="page7">
+  <div class="title">
+    <h1>♟️ Newsletter de l'Échiquier Tournaisien</h1>
+    <p>Mars 2026</p>
+  </div>
+
+  <hr>
+
+  <div class="content">
+    <div>
+      <h2>👥 Ambiance & entraînements</h2>
+      <p>Les cours de <strong>Michel C.</strong> continuent dans une excellente ambiance.</p>
+      <p>Que vous soyez débutant ou confirmé, tout le monde est le bienvenu pour progresser ensemble !</p>
+    </div>
+
+    <div>
+      <h2>📅 Prochains rendez-vous</h2>
+      <p>03/04 : Zodiac “qui perd gagne” (blitz)</p>
+      <p>10/04 & 17/04 : dernières manches des championnats et de l’Open Hivernal</p>
+      <p>24/04 : remise des prix + quiz de fin de quadrimestre organisé par <strong>Julien M.</strong></p>
+      <p>N’hésitez pas à venir jouer, analyser vos parties et partager un bon moment autour des échecs 😊</p>
+      <p>À bientôt au club !</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>écrit par Liam P.</span>
+    <span>7</span>
+  </div>
+</div>
+
+<script>
+  function showPage(pageNumber) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+    document.getElementById('page' + pageNumber).classList.add('active');
+    document.querySelectorAll('.nav-btn')[pageNumber - 1].classList.add('active');
+  }
+</script>
+
 </body>
 </html>
